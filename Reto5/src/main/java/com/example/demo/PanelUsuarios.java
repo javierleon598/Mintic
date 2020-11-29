@@ -21,6 +21,10 @@ import javax.swing.JTextField;
  */
 public class PanelUsuarios extends JPanel{
     
+    private JPanel jPanelDatos;
+    private JPanel jPanelAccion;
+    private JPanel jPanelResultado;
+    
     private JRadioButton jRadioButtonConsultar; 
     private JRadioButton jRadioButtonActualizar;
     private JRadioButton jRadioButtonInsertar;
@@ -42,9 +46,13 @@ public class PanelUsuarios extends JPanel{
      
      private void initComponents() {
          
-        GridLayout gridLayout = new GridLayout(10,1);
-        gridLayout.setVgap(15);
+        GridLayout gridLayout = new GridLayout(3,1,10,10);
         setLayout(gridLayout);
+       
+         
+        GridLayout gridLayoutAccion = new GridLayout(2,1);     
+        GridLayout gridLayoutDatos = new GridLayout(4,1,0,10);     
+        GridLayout gridLayoutResultado = new GridLayout(0,1,10,10);
          
          JButton botonEjecutar = new JButton("ejecutar");
          
@@ -63,7 +71,13 @@ public class PanelUsuarios extends JPanel{
          JLabelEmail = new JLabel("email");
          JTextFieldUsuaro = new JTextField(20);
          JLabelUsuario = new JLabel("Usuario");
+         jPanelAccion = new JPanel();
+         jPanelDatos = new JPanel();
+         jPanelResultado = new JPanel();
          
+         jPanelAccion.setLayout(gridLayoutAccion);
+         jPanelDatos.setLayout(gridLayoutDatos);
+         jPanelResultado.setLayout(gridLayoutResultado);
          
         buttonGroupDireccion = new ButtonGroup();
         // Adiciona el boton de opción a un grupo de botones
@@ -71,31 +85,33 @@ public class PanelUsuarios extends JPanel{
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldApellido, JTextFieldEmail, JTextFieldUsuaro);
+        ListenerAccionUsuarios ListenerAccion = new ListenerAccionUsuarios(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldApellido, JTextFieldEmail, JTextFieldUsuaro);
         botonEjecutar.addActionListener(ListenerAccion);
      
       
-        add(jRadioButtonConsultar);
-        add(jRadioButtonActualizar);
-        add(jRadioButtonInsertar);
-        add(jRadioButtonEliminar);
-        
-        add(botonEjecutar);
-        
-        add(JLabelNombre);
-        add(JTextFieldNombre);
-        
-        add(JLabelApellido);
-        add(JTextFieldApellido);
-        
-        add(JLabelEmail);
-        add(JTextFieldEmail);
-        
-        add(JLabelUsuario);
-        add(JTextFieldUsuaro);
+        add(jPanelAccion);
+        jPanelAccion.add(jRadioButtonConsultar);
+        jPanelAccion.add(jRadioButtonActualizar);
+        jPanelAccion.add(jRadioButtonInsertar);
+        jPanelAccion.add(jRadioButtonEliminar);
         
         
-        add(JTextAreaResultado);
+        add(jPanelDatos);
+        jPanelDatos.add(JLabelNombre);
+        jPanelDatos.add(JTextFieldNombre);
+        
+        jPanelDatos.add(JLabelApellido);
+        jPanelDatos.add(JTextFieldApellido);
+        
+        jPanelDatos.add(JLabelEmail);
+        jPanelDatos.add(JTextFieldEmail);
+        
+        jPanelDatos.add(JLabelUsuario);
+        jPanelDatos.add(JTextFieldUsuaro);
+        
+        add(jPanelResultado);
+        jPanelResultado.add(botonEjecutar);
+        jPanelResultado.add(JTextAreaResultado);
         
        
         

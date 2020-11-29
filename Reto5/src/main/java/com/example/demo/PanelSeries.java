@@ -18,6 +18,10 @@ import javax.swing.JTextField;
  */
 public class PanelSeries extends JPanel{
     
+    private JPanel jPanelDatos;
+    private JPanel jPanelAccion;
+    private JPanel jPanelResultado;
+    
     private JRadioButton jRadioButtonConsultar; 
     private JRadioButton jRadioButtonActualizar;
     private JRadioButton jRadioButtonInsertar;
@@ -37,13 +41,16 @@ public class PanelSeries extends JPanel{
      
      private void initComponents() {
          
-        GridLayout gridLayout = new GridLayout(10,1);
-        gridLayout.setVgap(15);
+        GridLayout gridLayout = new GridLayout(3,1,10,10);
         setLayout(gridLayout);
+       
          
-         JButton botonEjecutar = new JButton("ejecutar");
+        GridLayout gridLayoutAccion = new GridLayout(2,1);     
+        GridLayout gridLayoutDatos = new GridLayout(4,1,0,10);     
+        GridLayout gridLayoutResultado = new GridLayout(0,1,10,10);
          
-         
+        
+        JButton botonEjecutar = new JButton("ejecutar");
          
          jRadioButtonConsultar = new JRadioButton("Consultar", true);
          jRadioButtonActualizar = new JRadioButton("Actualizar");
@@ -56,7 +63,13 @@ public class PanelSeries extends JPanel{
          JLabelEpisodios = new JLabel("Episodios");
          JTextFieldTemporadas = new JTextField(20);
          JLabelTemporadas = new JLabel("Temporadas");
+         jPanelAccion = new JPanel();
+         jPanelDatos = new JPanel();
+         jPanelResultado = new JPanel();
          
+         jPanelAccion.setLayout(gridLayoutAccion);
+         jPanelDatos.setLayout(gridLayoutDatos);
+         jPanelResultado.setLayout(gridLayoutResultado);
          
         buttonGroupDireccion = new ButtonGroup();
         // Adiciona el boton de opción a un grupo de botones
@@ -66,25 +79,27 @@ public class PanelSeries extends JPanel{
         buttonGroupDireccion.add(jRadioButtonEliminar);
         ListenerAccionSerie ListenerAccionSerie = new ListenerAccionSerie(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldEpisodios, JTextFieldTemporadas);
         botonEjecutar.addActionListener(ListenerAccionSerie);
+        
+        add(jPanelAccion);
+        jPanelAccion.add(jRadioButtonConsultar);
+        jPanelAccion.add(jRadioButtonActualizar);
+        jPanelAccion.add(jRadioButtonInsertar);
+        jPanelAccion.add(jRadioButtonEliminar);
+        
        
-        add(jRadioButtonConsultar);
-        add(jRadioButtonActualizar);
-        add(jRadioButtonInsertar);
-        add(jRadioButtonEliminar);
+        add(jPanelDatos);
+        jPanelDatos.add(JLabelNombre);
+        jPanelDatos.add(JTextFieldNombre);
         
-        add(botonEjecutar);
+        jPanelDatos.add(JLabelEpisodios);
+        jPanelDatos.add(JTextFieldEpisodios);
         
-        add(JLabelNombre);
-        add(JTextFieldNombre);
+        jPanelDatos.add(JLabelTemporadas);
+        jPanelDatos.add(JTextFieldTemporadas);
         
-        add(JLabelEpisodios);
-        add(JTextFieldEpisodios);
-        
-        add(JLabelTemporadas);
-        add(JTextFieldTemporadas);
-        
-  
-        add(JTextAreaResultado);
+        add(jPanelResultado);
+        jPanelResultado.add(botonEjecutar);
+        jPanelResultado.add(JTextAreaResultado);
         
   
      }

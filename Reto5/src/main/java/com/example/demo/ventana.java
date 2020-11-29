@@ -26,6 +26,7 @@ public class ventana extends JFrame{
         setTitle("RedFlix");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
+        //setSize(500, 800);
         pack();
         setVisible(true);
     }
