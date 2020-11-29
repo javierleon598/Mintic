@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  *
  * @author olgat
  */
-public class PanelPeliculas_1 extends JPanel{
+public class PanelUsuarios extends JPanel{
     
     private JRadioButton jRadioButtonConsultar; 
     private JRadioButton jRadioButtonActualizar;
@@ -28,15 +28,15 @@ public class PanelPeliculas_1 extends JPanel{
     private JTextArea JTextAreaResultado;
     private JTextField JTextFieldNombre;
     private JLabel JLabelNombre;
-    private JTextField JTextFieldDirector;
-    private JLabel JLabelDirector;
-    private JTextField JTextFieldResumen;
-    private JLabel JLabelResumen;
-    private JTextField JTextFieldAnio;
-    private JLabel JLabelAnio;
+    private JTextField JTextFieldApellido;
+    private JLabel JLabelApellido;
+    private JTextField JTextFieldEmail;
+    private JLabel JLabelEmail;
+    private JTextField JTextFieldUsuaro;
+    private JLabel JLabelUsuario;
     private ButtonGroup buttonGroupDireccion;
     
-     public PanelPeliculas_1() {
+     public PanelUsuarios() {
         initComponents();
     }
      
@@ -57,12 +57,12 @@ public class PanelPeliculas_1 extends JPanel{
          JTextAreaResultado = new JTextArea("Resultado");
          JTextFieldNombre = new JTextField(20);
          JLabelNombre= new JLabel("Nombre");
-         JTextFieldDirector = new JTextField(20);
-         JLabelDirector = new JLabel("Director");
-         JTextFieldResumen = new JTextField(20);
-         JLabelResumen = new JLabel("Resumen");
-         JTextFieldAnio = new JTextField(20);
-         JLabelAnio = new JLabel("Año");
+         JTextFieldApellido = new JTextField(20);
+         JLabelApellido = new JLabel("Apellido");
+         JTextFieldEmail = new JTextField(20);
+         JLabelEmail = new JLabel("email");
+         JTextFieldUsuaro = new JTextField(20);
+         JLabelUsuario = new JLabel("Usuario");
          
          
         buttonGroupDireccion = new ButtonGroup();
@@ -71,7 +71,7 @@ public class PanelPeliculas_1 extends JPanel{
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccion ListenerAccion = new ListenerAccion(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldDirector, JTextFieldAnio, JTextFieldResumen);
+        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldApellido, JTextFieldEmail, JTextFieldUsuaro);
         botonEjecutar.addActionListener(ListenerAccion);
      
       
@@ -85,14 +85,14 @@ public class PanelPeliculas_1 extends JPanel{
         add(JLabelNombre);
         add(JTextFieldNombre);
         
-        add(JLabelDirector);
-        add(JTextFieldDirector);
+        add(JLabelApellido);
+        add(JTextFieldApellido);
         
-        add(JLabelResumen);
-        add(JTextFieldResumen);
+        add(JLabelEmail);
+        add(JTextFieldEmail);
         
-        add(JLabelAnio);
-        add(JTextFieldAnio);
+        add(JLabelUsuario);
+        add(JTextFieldUsuaro);
         
         
         add(JTextAreaResultado);
@@ -159,52 +159,52 @@ public class PanelPeliculas_1 extends JPanel{
         this.JLabelNombre = JLabelNombre;
     }
 
-    public JTextField getJTextFieldDirector() {
-        return JTextFieldDirector;
+    public JTextField getJTextFieldApellido() {
+        return JTextFieldApellido;
     }
 
-    public void setJTextFieldDirector(JTextField JTextFieldDirector) {
-        this.JTextFieldDirector = JTextFieldDirector;
+    public void setJTextFieldApellido(JTextField JTextFieldApellido) {
+        this.JTextFieldApellido = JTextFieldApellido;
     }
 
-    public JLabel getJLabelDirector() {
-        return JLabelDirector;
+    public JLabel getJLabelApellido() {
+        return JLabelApellido;
     }
 
-    public void setJLabelDirector(JLabel JLabelDirector) {
-        this.JLabelDirector = JLabelDirector;
+    public void setJLabelApellido(JLabel JLabelApellido) {
+        this.JLabelApellido = JLabelApellido;
     }
 
-    public JTextField getJTextFieldResumen() {
-        return JTextFieldResumen;
+    public JTextField getJTextFieldEmail() {
+        return JTextFieldEmail;
     }
 
-    public void setJTextFieldResumen(JTextField JTextFieldResumen) {
-        this.JTextFieldResumen = JTextFieldResumen;
+    public void setJTextFieldEmail(JTextField JTextFieldEmail) {
+        this.JTextFieldEmail = JTextFieldEmail;
     }
 
-    public JLabel getJLabelResumen() {
-        return JLabelResumen;
+    public JLabel getJLabelEmail() {
+        return JLabelEmail;
     }
 
-    public void setJLabelResumen(JLabel JLabelResumen) {
-        this.JLabelResumen = JLabelResumen;
+    public void setJLabelEmail(JLabel JLabelEmail) {
+        this.JLabelEmail = JLabelEmail;
     }
 
-    public JTextField getJTextFieldAnio() {
-        return JTextFieldAnio;
+    public JTextField getJTextFieldUsuaro() {
+        return JTextFieldUsuaro;
     }
 
-    public void setJTextFieldAnio(JTextField JTextFieldAnio) {
-        this.JTextFieldAnio = JTextFieldAnio;
+    public void setJTextFieldUsuaro(JTextField JTextFieldUsuaro) {
+        this.JTextFieldUsuaro = JTextFieldUsuaro;
     }
 
-    public JLabel getJLabelAnio() {
-        return JLabelAnio;
+    public JLabel getJLabelUsuario() {
+        return JLabelUsuario;
     }
 
-    public void setJLabelAnio(JLabel JLabelAnio) {
-        this.JLabelAnio = JLabelAnio;
+    public void setJLabelUsuario(JLabel JLabelUsuario) {
+        this.JLabelUsuario = JLabelUsuario;
     }
 
     public ButtonGroup getButtonGroupDireccion() {
@@ -214,6 +214,4 @@ public class PanelPeliculas_1 extends JPanel{
     public void setButtonGroupDireccion(ButtonGroup buttonGroupDireccion) {
         this.buttonGroupDireccion = buttonGroupDireccion;
     }
-     
-     
 }

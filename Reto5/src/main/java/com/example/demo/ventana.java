@@ -35,10 +35,12 @@ public class ventana extends JFrame{
         
         jTabbedPane1 = new JTabbedPane();
         PanelSeries panelSeries = new PanelSeries();
-        PanelPeliculas_1 PanelPeliculas_1 = new PanelPeliculas_1();
+        PanelPeliculas PanelPeliculas = new PanelPeliculas();
+        PanelUsuarios PanelUsuarios = new PanelUsuarios();
         add(jTabbedPane1);
         jTabbedPane1.add(panelSeries,"Series");
-        jTabbedPane1.add(PanelPeliculas_1,"Peliculas");
+        jTabbedPane1.add(PanelPeliculas,"Peliculas");
+        jTabbedPane1.add(PanelUsuarios,"Usuarios");
         
         
       

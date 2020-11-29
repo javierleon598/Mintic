@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author olgat
  */
-class ListenerAccion implements ActionListener{
+class ListenerAccionPelicula implements ActionListener{
 
     
     JRadioButton RadioButtonConsultar;
@@ -28,7 +28,7 @@ class ListenerAccion implements ActionListener{
     JTextField JTextFieldAnio;
     JTextField JTextFieldResumen;
     
-    public ListenerAccion(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldDirector, JTextField JTextFieldAnio, JTextField JTextFieldResumen ) {
+    public ListenerAccionPelicula(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldDirector, JTextField JTextFieldAnio, JTextField JTextFieldResumen ) {
         this.RadioButtonConsultar = RadioButtonConsultar;
         this.RadioButtonActualizar = RadioButtonActualizar;
         this.RadioButtonEliminar = RadioButtonEliminar;
