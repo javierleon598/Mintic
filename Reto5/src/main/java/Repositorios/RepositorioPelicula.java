@@ -5,13 +5,13 @@
  */
 package Repositorios;
 
-import org.springframework.stereotype.Repository;
+import com.example.demo.modelos.Pelicula;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author olgat
  */
-@Repository
-public class RepositorioPelicula extends {
+public interface RepositorioPelicula extends JpaRepository<Pelicula, Integer>{
     
 }

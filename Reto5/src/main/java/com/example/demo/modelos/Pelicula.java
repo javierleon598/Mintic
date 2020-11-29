@@ -6,6 +6,7 @@
 package com.example.demo.modelos;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
