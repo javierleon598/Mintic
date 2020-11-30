@@ -35,6 +35,19 @@ public class Usuario {
     @Column(name="contrasena")
     String Contrasena;
 
+    public Usuario(String Nombre, String Apellido, Date FechaNacimiento, String Celular, String email, String Usuario, String Contrasena) {
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.FechaNacimiento = FechaNacimiento;
+        this.Celular = Celular;
+        this.email = email;
+        this.Usuario = Usuario;
+        this.Contrasena = Contrasena;
+    }
+    
+    public Usuario(){
+    }
+    
     public String getNombre() {
         return Nombre;
     }
@@ -90,5 +103,6 @@ public class Usuario {
     public void setContrasena(String Contrasena) {
         this.Contrasena = Contrasena;
     }
-      
+
+    
 }

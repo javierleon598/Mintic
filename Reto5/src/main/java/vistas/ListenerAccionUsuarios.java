@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.demo;
+package vistas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,23 +14,31 @@ import javax.swing.JTextField;
  *
  * @author olgat
  */
-class ListenerAccionSerie implements ActionListener{
+class ListenerAccionUsuarios implements ActionListener{
     JRadioButton RadioButtonConsultar;
     JRadioButton RadioButtonActualizar;
     JRadioButton RadioButtonEliminar;
     JRadioButton RadioButtonInsertar;
     JTextField JTextFieldNombre;
-    JTextField JTextFieldEpisodios;
-    JTextField JTextFieldTemporadas;
+    JTextField JTextFieldApellido;
+    JTextField JTextFieldEmail;
+    JTextField JTextFieldUsuario;
+    JTextField JTextFieldContrasena;
+    JTextField JTextFieldCelular;
+    com.toedter.calendar.JDateChooser jDateChooserFechaNacimiento;
     
-    public ListenerAccionSerie(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldEpisodios, JTextField JTextFieldTemporadas ) {
+    public ListenerAccionUsuarios(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldApellido, com.toedter.calendar.JDateChooser jDateChooserFechaNacimiento, JTextField JTextFieldEmail,JTextField JTextFieldCelular, JTextField JTextFieldUsuario, JTextField JTextFieldContrasena ) {
         this.RadioButtonConsultar = RadioButtonConsultar;
         this.RadioButtonActualizar = RadioButtonActualizar;
         this.RadioButtonEliminar = RadioButtonEliminar;
         this.RadioButtonInsertar = RadioButtonInsertar;
         this.JTextFieldNombre = JTextFieldNombre;
-        this.JTextFieldEpisodios = JTextFieldEpisodios;
-        this.JTextFieldTemporadas = JTextFieldTemporadas;
+        this.JTextFieldApellido = JTextFieldApellido;
+        this.JTextFieldEmail = JTextFieldEmail;
+        this.JTextFieldUsuario = JTextFieldUsuario;
+        this.JTextFieldContrasena =JTextFieldContrasena;
+        this.jDateChooserFechaNacimiento = jDateChooserFechaNacimiento;
+        this.JTextFieldCelular = JTextFieldCelular;
        
     }
     
@@ -45,15 +53,15 @@ class ListenerAccionSerie implements ActionListener{
         } else {
             if (RadioButtonActualizar.isSelected()) {
                 
-                System.out.println(this.JTextFieldEpisodios.getText());
+                System.out.println(this.JTextFieldApellido.getText());
             } else {
                 if (RadioButtonEliminar.isSelected()) {
                     
-                    System.out.println(this.JTextFieldEpisodios.getText());
+                    System.out.println(this.JTextFieldEmail.getText());
                 } else {
                    if (RadioButtonInsertar.isSelected()) {
                     
-                    System.out.println(this.JTextFieldEpisodios.getText());
+                    System.out.println(this.JTextFieldUsuario.getText());
                 } else {
                    
                 }

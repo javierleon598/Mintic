@@ -23,9 +23,17 @@ public class Serie {
     @Column(name="numero_temporadas")
     String Temporadas;
     @Column(name = "contenido_id")
-    Long contenidoId;
+    Integer contenidoId;
 
-   
+    public Serie(String Episodios, String Temporadas, Integer contenidoId) {
+        this.Episodios = Episodios;
+        this.Temporadas = Temporadas;
+        this.contenidoId = contenidoId;
+    }
+    
+    public Serie(){
+    }
+      
 
     public String getEpisodios() {
         return Episodios;
@@ -43,13 +51,17 @@ public class Serie {
         this.Temporadas = Temporadas;
     }
 
-    public Long getContenidoId() {
+    public Integer getContenidoId() {
         return contenidoId;
     }
 
-    public void setContenidoId(Long contenidoId) {
+    public void setContenidoId(Integer contenidoId) {
         this.contenidoId = contenidoId;
     }
+
+   
+
+    
     
     
 }

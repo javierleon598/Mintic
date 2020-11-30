@@ -13,6 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author olgat
  */
-public interface RepositorioUsuario extends JpaRepository<Usuario, Integer> {
+public interface RepositorioUsuario extends JpaRepository<Usuario, String> {
     
 }

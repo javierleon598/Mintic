@@ -19,19 +19,27 @@ import javax.persistence.Table;
 public class Pelicula {
     @Id
     @Column(name="annio")
-    Long Annio;
+    Integer Annio;
     @Column(name="director")
     String Director;
     @Column(name="resumen")
     String Resumen;
     @Column(name = "contenido_id")
-    Long contenidoId;
+    Integer contenidoId;
 
-    public Long getAnnio() {
+    public Pelicula(Integer Annio, String Director, String Resumen, Integer contenidoId) {
+        this.Annio = Annio;
+        this.Director = Director;
+        this.Resumen = Resumen;
+        this.contenidoId = contenidoId;
+    }
+    public Pelicula(){
+    }
+    public Integer getAnnio() {
         return Annio;
     }
 
-    public void setAnnio(Long Annio) {
+    public void setAnnio(Integer Annio) {
         this.Annio = Annio;
     }
 
@@ -51,13 +59,15 @@ public class Pelicula {
         this.Resumen = Resumen;
     }
 
-    public Long getContenidoId() {
+    public Integer getContenidoId() {
         return contenidoId;
     }
 
-    public void setContenidoId(Long contenidoId) {
+    public void setContenidoId(Integer contenidoId) {
         this.contenidoId = contenidoId;
     }
+
+    
     
     
            

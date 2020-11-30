@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author olgat
  */
-public interface RepositorioPelicula extends JpaRepository<Pelicula, Integer>{
+public interface RepositorioPelicula extends JpaRepository<Pelicula, Long>{
     
 }

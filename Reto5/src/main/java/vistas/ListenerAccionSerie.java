@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.demo;
+package vistas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javafx.scene.control.RadioButton;
-import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -16,27 +14,24 @@ import javax.swing.JTextField;
  *
  * @author olgat
  */
-class ListenerAccionPelicula implements ActionListener{
-
-    
+class ListenerAccionSerie implements ActionListener{
     JRadioButton RadioButtonConsultar;
     JRadioButton RadioButtonActualizar;
     JRadioButton RadioButtonEliminar;
     JRadioButton RadioButtonInsertar;
     JTextField JTextFieldNombre;
-    JTextField JTextFieldDirector;
-    JTextField JTextFieldAnio;
-    JTextField JTextFieldResumen;
+    JTextField JTextFieldEpisodios;
+    JTextField JTextFieldTemporadas;
     
-    public ListenerAccionPelicula(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldDirector, JTextField JTextFieldAnio, JTextField JTextFieldResumen ) {
+    public ListenerAccionSerie(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldEpisodios, JTextField JTextFieldTemporadas ) {
         this.RadioButtonConsultar = RadioButtonConsultar;
         this.RadioButtonActualizar = RadioButtonActualizar;
         this.RadioButtonEliminar = RadioButtonEliminar;
         this.RadioButtonInsertar = RadioButtonInsertar;
         this.JTextFieldNombre = JTextFieldNombre;
-        this.JTextFieldDirector = JTextFieldDirector;
-        this.JTextFieldAnio = JTextFieldAnio;
-        this.JTextFieldResumen = JTextFieldResumen;
+        this.JTextFieldEpisodios = JTextFieldEpisodios;
+        this.JTextFieldTemporadas = JTextFieldTemporadas;
+       
     }
     
     
@@ -50,23 +45,21 @@ class ListenerAccionPelicula implements ActionListener{
         } else {
             if (RadioButtonActualizar.isSelected()) {
                 
-                System.out.println(this.JTextFieldDirector.getText());
+                System.out.println(this.JTextFieldEpisodios.getText());
             } else {
                 if (RadioButtonEliminar.isSelected()) {
                     
-                    System.out.println(this.JTextFieldAnio.getText());
+                    System.out.println(this.JTextFieldEpisodios.getText());
                 } else {
-                    if (RadioButtonInsertar.isSelected()) {
-                        
-                        System.out.println(this.JTextFieldResumen.getText());
-                    } else {
-
-                    }
+                   if (RadioButtonInsertar.isSelected()) {
+                    
+                    System.out.println(this.JTextFieldEpisodios.getText());
+                } else {
+                   
+                }
                 }
 
             }
         }
     }
-    
-    
 }

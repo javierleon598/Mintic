@@ -1,4 +1,4 @@
-package com.example.demo;
+package vistas;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.GridLayout;

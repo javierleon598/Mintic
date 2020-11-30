@@ -19,15 +19,23 @@ import javax.persistence.Table;
 public class Contenido {
     @Id
     @Column(name="contenido_id")
-    Long ContenidoId;
+    Integer ContenidoId;
     @Column(name="titulo")
     String Titulo;
 
-    public Long getContenidoId() {
+    public Contenido(Integer ContenidoId, String Titulo) {
+        this.ContenidoId = ContenidoId;
+        this.Titulo = Titulo;
+    }
+    
+    public Contenido(){
+    }
+
+    public Integer getContenidoId() {
         return ContenidoId;
     }
 
-    public void setContenidoId(Long ContenidoId) {
+    public void setContenidoId(Integer ContenidoId) {
         this.ContenidoId = ContenidoId;
     }
 
@@ -38,5 +46,10 @@ public class Contenido {
     public void setTitulo(String Titulo) {
         this.Titulo = Titulo;
     }
+
+    
+
+   
+
     
 }
