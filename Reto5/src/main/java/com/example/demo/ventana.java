@@ -28,6 +28,7 @@ public class ventana extends JFrame{
         initComponents();
         //setSize(500, 800);
         pack();
+        
         setVisible(true);
     }
     

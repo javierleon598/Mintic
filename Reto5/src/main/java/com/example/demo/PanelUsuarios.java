@@ -1,26 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.demo;
+
+import com.toedter.calendar.JDateChooser;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
 /**
  *
  * @author olgat
  */
-public class PanelUsuarios extends JPanel{
-    
+public class PanelUsuarios extends javax.swing.JPanel {
+
+    /**
+     * Creates new form PanelUsuarios
+     */
     private JPanel jPanelDatos;
     private JPanel jPanelAccion;
     private JPanel jPanelResultado;
@@ -35,42 +33,63 @@ public class PanelUsuarios extends JPanel{
     private JTextField JTextFieldApellido;
     private JLabel JLabelApellido;
     private JTextField JTextFieldEmail;
+    private JLabel JLabelCelular;
+    private JTextField JTextFieldCelular;
     private JLabel JLabelEmail;
-    private JTextField JTextFieldUsuaro;
+    private JTextField JTextFieldUsuario;
     private JLabel JLabelUsuario;
+    private JTextField JTextFieldContrasena;
+    private JLabel JLabelContrasena;
+    private JLabel JLabelFechaNac;
+    private com.toedter.calendar.JDateChooser jDateChooserFechaNacimiento;
     private ButtonGroup buttonGroupDireccion;
+   
     
-     public PanelUsuarios() {
+    public PanelUsuarios() {
         initComponents();
     }
-     
-     private void initComponents() {
+    private void initComponents() {
          
         GridLayout gridLayout = new GridLayout(3,1,10,10);
         setLayout(gridLayout);
        
          
         GridLayout gridLayoutAccion = new GridLayout(2,1);     
-        GridLayout gridLayoutDatos = new GridLayout(4,1,0,10);     
+        GridLayout gridLayoutDatos = new GridLayout(4,4,0,5);     
         GridLayout gridLayoutResultado = new GridLayout(0,1,10,10);
          
          JButton botonEjecutar = new JButton("ejecutar");
-         
-         
+        
          
          jRadioButtonConsultar = new JRadioButton("Consultar", true);
          jRadioButtonActualizar = new JRadioButton("Actualizar");
          jRadioButtonInsertar = new JRadioButton("Insertar");
          jRadioButtonEliminar = new JRadioButton("Eliminar");
+         
          JTextAreaResultado = new JTextArea("Resultado");
-         JTextFieldNombre = new JTextField(20);
+         
+         JTextFieldNombre = new JTextField(12);
          JLabelNombre= new JLabel("Nombre");
-         JTextFieldApellido = new JTextField(20);
+         
+         JTextFieldApellido = new JTextField(12);
          JLabelApellido = new JLabel("Apellido");
-         JTextFieldEmail = new JTextField(20);
+         
+         JLabelCelular = new JLabel ("Celular");
+         JTextFieldCelular = new JTextField(12);
+         
+         JLabelFechaNac = new JLabel("Fecha de nacimiento");
+         jDateChooserFechaNacimiento = new com.toedter.calendar.JDateChooser();
+         
          JLabelEmail = new JLabel("email");
-         JTextFieldUsuaro = new JTextField(20);
+         JTextFieldEmail = new JTextField(12);
+         
          JLabelUsuario = new JLabel("Usuario");
+         JTextFieldUsuario = new JTextField(12);
+         
+         JLabelContrasena = new JLabel("Contraseña");
+         JTextFieldContrasena = new JTextField(12);
+         
+         
          jPanelAccion = new JPanel();
          jPanelDatos = new JPanel();
          jPanelResultado = new JPanel();
@@ -85,7 +104,7 @@ public class PanelUsuarios extends JPanel{
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccionUsuarios ListenerAccion = new ListenerAccionUsuarios(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldApellido, JTextFieldEmail, JTextFieldUsuaro);
+        ListenerAccionUsuarios ListenerAccion = new ListenerAccionUsuarios(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldApellido, jDateChooserFechaNacimiento, JTextFieldCelular, JTextFieldEmail, JTextFieldUsuario, JTextFieldContrasena);
         botonEjecutar.addActionListener(ListenerAccion);
      
       
@@ -103,22 +122,92 @@ public class PanelUsuarios extends JPanel{
         jPanelDatos.add(JLabelApellido);
         jPanelDatos.add(JTextFieldApellido);
         
+        jPanelDatos.add(JLabelFechaNac);
+        jPanelDatos.add(jDateChooserFechaNacimiento);
+        
+        jPanelDatos.add(JLabelCelular);
+        jPanelDatos.add(JTextFieldCelular);
+        
         jPanelDatos.add(JLabelEmail);
         jPanelDatos.add(JTextFieldEmail);
         
         jPanelDatos.add(JLabelUsuario);
-        jPanelDatos.add(JTextFieldUsuaro);
+        jPanelDatos.add(JTextFieldUsuario);
+        
+        
+        jPanelDatos.add(JLabelContrasena);
+        jPanelDatos.add(JTextFieldContrasena);
         
         add(jPanelResultado);
         jPanelResultado.add(botonEjecutar);
         jPanelResultado.add(JTextAreaResultado);
-        
        
         
-        
-        
-     }
+    }
 
+    public JPanel getjPanelDatos() {
+        return jPanelDatos;
+    }
+
+    public void setjPanelDatos(JPanel jPanelDatos) {
+        this.jPanelDatos = jPanelDatos;
+    }
+
+    public JPanel getjPanelAccion() {
+        return jPanelAccion;
+    }
+
+    public void setjPanelAccion(JPanel jPanelAccion) {
+        this.jPanelAccion = jPanelAccion;
+    }
+
+    public JPanel getjPanelResultado() {
+        return jPanelResultado;
+    }
+
+    public void setjPanelResultado(JPanel jPanelResultado) {
+        this.jPanelResultado = jPanelResultado;
+    }
+
+    public JTextField getJTextFieldUsuario() {
+        return JTextFieldUsuario;
+    }
+
+    public void setJTextFieldUsuario(JTextField JTextFieldUsuario) {
+        this.JTextFieldUsuario = JTextFieldUsuario;
+    }
+
+    public JTextField getJTextFieldContrasena() {
+        return JTextFieldContrasena;
+    }
+
+    public void setJTextFieldContrasena(JTextField JTextFieldContrasena) {
+        this.JTextFieldContrasena = JTextFieldContrasena;
+    }
+
+    public JLabel getJLabelContrasena() {
+        return JLabelContrasena;
+    }
+
+    public void setJLabelContrasena(JLabel JLabelContrasena) {
+        this.JLabelContrasena = JLabelContrasena;
+    }
+
+    public JLabel getJLabelFechaNac() {
+        return JLabelFechaNac;
+    }
+
+    public void setJLabelFechaNac(JLabel JLabelFechaNac) {
+        this.JLabelFechaNac = JLabelFechaNac;
+    }
+
+    public JDateChooser getjDateChooserFechaNacimiento() {
+        return jDateChooserFechaNacimiento;
+    }
+
+    public void setjDateChooserFechaNacimiento(JDateChooser jDateChooserFechaNacimiento) {
+        this.jDateChooserFechaNacimiento = jDateChooserFechaNacimiento;
+    }
     public JRadioButton getjRadioButtonConsultar() {
         return jRadioButtonConsultar;
     }
@@ -208,11 +297,11 @@ public class PanelUsuarios extends JPanel{
     }
 
     public JTextField getJTextFieldUsuaro() {
-        return JTextFieldUsuaro;
+        return JTextFieldUsuario;
     }
 
     public void setJTextFieldUsuaro(JTextField JTextFieldUsuaro) {
-        this.JTextFieldUsuaro = JTextFieldUsuaro;
+        this.JTextFieldUsuario = JTextFieldUsuaro;
     }
 
     public JLabel getJLabelUsuario() {

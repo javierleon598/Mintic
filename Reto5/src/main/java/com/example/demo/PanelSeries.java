@@ -102,7 +102,7 @@ public class PanelSeries extends JPanel{
         jPanelResultado.add(JTextAreaResultado);
         
   
-     }
+    }
 
     public JRadioButton getjRadioButtonConsultar() {
         return jRadioButtonConsultar;

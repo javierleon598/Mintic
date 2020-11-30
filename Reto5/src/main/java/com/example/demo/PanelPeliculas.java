@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package com.example.demo;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -40,6 +43,7 @@ public class PanelPeliculas extends JPanel{
     private JLabel JLabelAnio;
     private ButtonGroup buttonGroupDireccion;
     private JButton botonEjecutar;
+    private Object date;
     
      public PanelPeliculas() {
         initComponents();
@@ -56,6 +60,7 @@ public class PanelPeliculas extends JPanel{
         GridLayout gridLayoutResultado = new GridLayout(0,1,10,10);
         
         
+         
          
          botonEjecutar = new JButton("ejecutar");
          jRadioButtonConsultar = new JRadioButton("Consultar", true);

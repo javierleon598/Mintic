@@ -15,40 +15,32 @@ import javax.persistence.Table;
  * @author olgat
  */
 @Entity
-@Table(name = "pelicula")
-public class Pelicula {
+@Table(name = "serie")
+public class Serie {
     @Id
-    @Column(name="annio")
-    Long Annio;
-    @Column(name="director")
-    String Director;
-    @Column(name="resumen")
-    String Resumen;
+    @Column(name="numero_episodios")
+    String Episodios;
+    @Column(name="numero_temporadas")
+    String Temporadas;
     @Column(name = "contenido_id")
     Long contenidoId;
 
-    public Long getAnnio() {
-        return Annio;
+   
+
+    public String getEpisodios() {
+        return Episodios;
     }
 
-    public void setAnnio(Long Annio) {
-        this.Annio = Annio;
+    public void setEpisodios(String Episodios) {
+        this.Episodios = Episodios;
     }
 
-    public String getDirector() {
-        return Director;
+    public String getTemporadas() {
+        return Temporadas;
     }
 
-    public void setDirector(String Director) {
-        this.Director = Director;
-    }
-
-    public String getResumen() {
-        return Resumen;
-    }
-
-    public void setResumen(String Resumen) {
-        this.Resumen = Resumen;
+    public void setTemporadas(String Temporadas) {
+        this.Temporadas = Temporadas;
     }
 
     public Long getContenidoId() {
@@ -60,5 +52,4 @@ public class Pelicula {
     }
     
     
-           
 }

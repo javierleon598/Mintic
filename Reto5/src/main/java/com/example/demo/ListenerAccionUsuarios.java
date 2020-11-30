@@ -23,8 +23,11 @@ class ListenerAccionUsuarios implements ActionListener{
     JTextField JTextFieldApellido;
     JTextField JTextFieldEmail;
     JTextField JTextFieldUsuario;
+    JTextField JTextFieldContrasena;
+    JTextField JTextFieldCelular;
+    com.toedter.calendar.JDateChooser jDateChooserFechaNacimiento;
     
-    public ListenerAccionUsuarios(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldApellido, JTextField JTextFieldEmail, JTextField JTextFieldUsuario ) {
+    public ListenerAccionUsuarios(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldApellido, com.toedter.calendar.JDateChooser jDateChooserFechaNacimiento, JTextField JTextFieldEmail,JTextField JTextFieldCelular, JTextField JTextFieldUsuario, JTextField JTextFieldContrasena ) {
         this.RadioButtonConsultar = RadioButtonConsultar;
         this.RadioButtonActualizar = RadioButtonActualizar;
         this.RadioButtonEliminar = RadioButtonEliminar;
@@ -33,6 +36,9 @@ class ListenerAccionUsuarios implements ActionListener{
         this.JTextFieldApellido = JTextFieldApellido;
         this.JTextFieldEmail = JTextFieldEmail;
         this.JTextFieldUsuario = JTextFieldUsuario;
+        this.JTextFieldContrasena =JTextFieldContrasena;
+        this.jDateChooserFechaNacimiento = jDateChooserFechaNacimiento;
+        this.JTextFieldCelular = JTextFieldCelular;
        
     }
     
