@@ -3,18 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vistas;
+package com.example.demo.vistas;
 
+
+import com.example.demo.Repositorios.RepositorioContenido;
+import com.example.demo.Repositorios.RepositorioSerie;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author olgat
  */
+
 class ListenerAccionSerie implements ActionListener{
+    
+    RepositorioSerie RepositorioSerie;
+    RepositorioContenido RepositorioContenido;
     JRadioButton RadioButtonConsultar;
     JRadioButton RadioButtonActualizar;
     JRadioButton RadioButtonEliminar;
@@ -23,7 +33,8 @@ class ListenerAccionSerie implements ActionListener{
     JTextField JTextFieldEpisodios;
     JTextField JTextFieldTemporadas;
     
-    public ListenerAccionSerie(JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldEpisodios, JTextField JTextFieldTemporadas ) {
+    
+    public ListenerAccionSerie(RepositorioContenido RepositorioContenido, RepositorioSerie RepositorioSerie,JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldEpisodios, JTextField JTextFieldTemporadas ) {
         this.RadioButtonConsultar = RadioButtonConsultar;
         this.RadioButtonActualizar = RadioButtonActualizar;
         this.RadioButtonEliminar = RadioButtonEliminar;
@@ -31,7 +42,8 @@ class ListenerAccionSerie implements ActionListener{
         this.JTextFieldNombre = JTextFieldNombre;
         this.JTextFieldEpisodios = JTextFieldEpisodios;
         this.JTextFieldTemporadas = JTextFieldTemporadas;
-       
+        this.RepositorioContenido = RepositorioContenido;
+        this.RepositorioSerie = RepositorioSerie;
     }
     
     

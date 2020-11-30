@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vistas;
+package com.example.demo.vistas;
+
+import com.example.demo.Repositorios.RepositorioContenido;
+import com.example.demo.Repositorios.RepositorioPelicula;
+import com.example.demo.SpringContext;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -18,12 +22,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 /**
  *
  * @author olgat
  */
+
 public class PanelPeliculas extends JPanel{
-    
+   
+    RepositorioContenido RepositorioContenido;
+    RepositorioPelicula RepositorioPelicula;
     private JPanel jPanelDatos;
     private JPanel jPanelAccion;
     private JPanel jPanelResultado;
@@ -43,7 +53,8 @@ public class PanelPeliculas extends JPanel{
     private JLabel JLabelAnio;
     private ButtonGroup buttonGroupDireccion;
     private JButton botonEjecutar;
-    private Object date;
+    
+   
     
      public PanelPeliculas() {
         initComponents();
@@ -53,14 +64,12 @@ public class PanelPeliculas extends JPanel{
          
         GridLayout gridLayout = new GridLayout(3,1,10,10);
         setLayout(gridLayout);
-       
-         
+        RepositorioContenido = SpringContext.getBean(RepositorioContenido.class);
+        RepositorioPelicula = SpringContext.getBean(RepositorioPelicula.class);
+        
         GridLayout gridLayoutAccion = new GridLayout(2,1);     
         GridLayout gridLayoutDatos = new GridLayout(4,1,0,10);     
         GridLayout gridLayoutResultado = new GridLayout(0,1,10,10);
-        
-        
-         
          
          botonEjecutar = new JButton("ejecutar");
          jRadioButtonConsultar = new JRadioButton("Consultar", true);
@@ -92,7 +101,7 @@ public class PanelPeliculas extends JPanel{
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldDirector, JTextFieldAnio, JTextFieldResumen);
+        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(RepositorioContenido, RepositorioPelicula,jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldDirector, JTextFieldAnio, JTextFieldResumen);
         botonEjecutar.addActionListener(ListenerAccion);
      
         add(jPanelAccion);
@@ -120,9 +129,7 @@ public class PanelPeliculas extends JPanel{
         
         jPanelResultado.add(JTextAreaResultado);
         
-       
-        
-        
+    
         
      }
 

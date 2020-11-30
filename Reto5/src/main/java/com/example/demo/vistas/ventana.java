@@ -3,26 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vistas;
+package com.example.demo.vistas;
 
+
+import com.example.demo.DemoApplication;
+import com.example.demo.SpringContext;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 
 /**
  *
  * @author olgat
  */
+
 public class ventana extends JFrame{
     
     private JTabbedPane jTabbedPane1;
     
     public ventana() {
-       
+        DemoApplication.iniciarSpring();
         setTitle("RedFlix");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();

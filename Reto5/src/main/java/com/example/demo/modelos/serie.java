@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "serie")
-public class Serie {
+public class serie {
     @Id
     @Column(name="numero_episodios")
     String Episodios;
@@ -25,13 +25,13 @@ public class Serie {
     @Column(name = "contenido_id")
     Integer contenidoId;
 
-    public Serie(String Episodios, String Temporadas, Integer contenidoId) {
+    public serie(String Episodios, String Temporadas, Integer contenidoId) {
         this.Episodios = Episodios;
         this.Temporadas = Temporadas;
         this.contenidoId = contenidoId;
     }
     
-    public Serie(){
+    public serie(){
     }
       
 

@@ -18,7 +18,7 @@ import org.hibernate.type.DateType;
  */
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class usuario {
     @Id
     @Column(name="nombre")
     String Nombre;
@@ -35,7 +35,7 @@ public class Usuario {
     @Column(name="contrasena")
     String Contrasena;
 
-    public Usuario(String Nombre, String Apellido, Date FechaNacimiento, String Celular, String email, String Usuario, String Contrasena) {
+    public usuario(String Nombre, String Apellido, Date FechaNacimiento, String Celular, String email, String Usuario, String Contrasena) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.FechaNacimiento = FechaNacimiento;
@@ -45,7 +45,7 @@ public class Usuario {
         this.Contrasena = Contrasena;
     }
     
-    public Usuario(){
+    public usuario(){
     }
     
     public String getNombre() {

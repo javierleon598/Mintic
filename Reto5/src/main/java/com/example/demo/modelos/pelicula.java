@@ -16,24 +16,25 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "pelicula")
-public class Pelicula {
-    @Id
-    @Column(name="annio")
+public class pelicula {
+    
+    @Column(name="anno")
     Integer Annio;
-    @Column(name="director")
-    String Director;
+    @Column(name="director_id")
+    String directorId;
     @Column(name="resumen")
     String Resumen;
+    @Id
     @Column(name = "contenido_id")
     Integer contenidoId;
 
-    public Pelicula(Integer Annio, String Director, String Resumen, Integer contenidoId) {
+    public pelicula(Integer Annio, String directorId, String Resumen, Integer contenidoId) {
         this.Annio = Annio;
-        this.Director = Director;
+        this.directorId = directorId;
         this.Resumen = Resumen;
         this.contenidoId = contenidoId;
     }
-    public Pelicula(){
+    public pelicula(){
     }
     public Integer getAnnio() {
         return Annio;
@@ -43,12 +44,12 @@ public class Pelicula {
         this.Annio = Annio;
     }
 
-    public String getDirector() {
-        return Director;
+    public String getDirectorId() {
+        return directorId;
     }
 
-    public void setDirector(String Director) {
-        this.Director = Director;
+    public void setDirectorId(String directorId) {
+        this.directorId = directorId;
     }
 
     public String getResumen() {

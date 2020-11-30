@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vistas;
+package com.example.demo.vistas;
+
+
+import com.example.demo.Repositorios.RepositorioContenido;
+import com.example.demo.Repositorios.RepositorioSerie;
+import com.example.demo.SpringContext;
 import java.awt.GridLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -12,10 +17,14 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 /**
  *
  * @author olgat
  */
+
 public class PanelSeries extends JPanel{
     
     private JPanel jPanelDatos;
@@ -34,15 +43,22 @@ public class PanelSeries extends JPanel{
     private JTextField JTextFieldTemporadas;
     private JLabel JLabelTemporadas;
     private ButtonGroup buttonGroupDireccion;
+    RepositorioSerie RepositorioSerie = SpringContext.getBean(RepositorioSerie.class);
+    RepositorioContenido RepositorioContenido = SpringContext.getBean(RepositorioContenido.class);
     
      public PanelSeries() {
+        
         initComponents();
+        
     }
-     
+   
      private void initComponents() {
+        
+        
          
         GridLayout gridLayout = new GridLayout(3,1,10,10);
         setLayout(gridLayout);
+        
        
          
         GridLayout gridLayoutAccion = new GridLayout(2,1);     
@@ -77,7 +93,7 @@ public class PanelSeries extends JPanel{
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccionSerie ListenerAccionSerie = new ListenerAccionSerie(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldEpisodios, JTextFieldTemporadas);
+        ListenerAccionSerie ListenerAccionSerie = new ListenerAccionSerie(RepositorioContenido, RepositorioSerie,jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldEpisodios, JTextFieldTemporadas);
         botonEjecutar.addActionListener(ListenerAccionSerie);
         
         add(jPanelAccion);

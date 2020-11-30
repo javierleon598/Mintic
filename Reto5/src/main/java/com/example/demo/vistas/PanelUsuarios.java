@@ -1,4 +1,4 @@
-package vistas;
+package com.example.demo.vistas;
 
 import com.toedter.calendar.JDateChooser;
 import java.awt.GridLayout;
@@ -9,11 +9,14 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author olgat
  */
+
 public class PanelUsuarios extends javax.swing.JPanel {
 
     /**

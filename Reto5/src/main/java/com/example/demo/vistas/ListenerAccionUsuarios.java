@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vistas;
+package com.example.demo.vistas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author olgat
  */
+
 class ListenerAccionUsuarios implements ActionListener{
     JRadioButton RadioButtonConsultar;
     JRadioButton RadioButtonActualizar;

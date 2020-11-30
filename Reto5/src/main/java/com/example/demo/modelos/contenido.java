@@ -15,20 +15,20 @@ import javax.persistence.Table;
  * @author olgat
  */
 @Entity
-@Table(name = "pelicula")
-public class Contenido {
+@Table(name = "contenido")
+public class contenido {
     @Id
     @Column(name="contenido_id")
     Integer ContenidoId;
     @Column(name="titulo")
     String Titulo;
 
-    public Contenido(Integer ContenidoId, String Titulo) {
+    public contenido(Integer ContenidoId, String Titulo) {
         this.ContenidoId = ContenidoId;
         this.Titulo = Titulo;
     }
     
-    public Contenido(){
+    public contenido(){
     }
 
     public Integer getContenidoId() {
