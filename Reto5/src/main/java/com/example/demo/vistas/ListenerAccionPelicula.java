@@ -7,9 +7,11 @@ package com.example.demo.vistas;
 
 
 import com.example.demo.Repositorios.RepositorioContenido;
+import com.example.demo.Repositorios.RepositorioDirector;
 import com.example.demo.Repositorios.RepositorioPelicula;
 import com.example.demo.SpringContext;
 import com.example.demo.modelos.contenido;
+import com.example.demo.modelos.director;
 import com.example.demo.modelos.pelicula;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +35,7 @@ class ListenerAccionPelicula implements ActionListener{
     
     RepositorioContenido RepositorioContenido;
     RepositorioPelicula RepositorioPelicula;
+    RepositorioDirector RepositorioDirector;
     JRadioButton RadioButtonConsultar;
     JRadioButton RadioButtonActualizar;
     JRadioButton RadioButtonEliminar;
@@ -45,7 +48,8 @@ class ListenerAccionPelicula implements ActionListener{
     
     
     
-    public ListenerAccionPelicula(RepositorioContenido RepositorioContenido,RepositorioPelicula RepositorioPelicula, JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldDirector, JTextField JTextFieldAnio, JTextField JTextFieldResumen ) {
+    
+    public ListenerAccionPelicula(RepositorioDirector RepositorioDirector, RepositorioContenido RepositorioContenido,RepositorioPelicula RepositorioPelicula, JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldDirector, JTextField JTextFieldAnio, JTextField JTextFieldResumen ) {
         this.RadioButtonConsultar = RadioButtonConsultar;
         this.RadioButtonActualizar = RadioButtonActualizar;
         this.RadioButtonEliminar = RadioButtonEliminar;
@@ -56,6 +60,7 @@ class ListenerAccionPelicula implements ActionListener{
         this.JTextFieldResumen = JTextFieldResumen;
         this.RepositorioContenido = RepositorioContenido;
         this.RepositorioPelicula = RepositorioPelicula;
+        this.RepositorioDirector = RepositorioDirector;
     }
     
     
@@ -76,33 +81,46 @@ class ListenerAccionPelicula implements ActionListener{
                 if(contenido.getTitulo().equals(Titulo)){
                     contenidoId = contenido.getContenidoId();
                     System.out.println(contenidoId);
-                    break;
+                    Optional<pelicula> Resultado = RepositorioPelicula.findById(contenidoId);
+                    if (Resultado.isPresent()) {
+                        pelicula peliculaEncontrada = Resultado.get();
+                        Integer ContenidoId = peliculaEncontrada.getContenidoId();
+                        JTextFieldAnio.setText(Integer.toString(peliculaEncontrada.getAnnio()));
+                        JTextFieldResumen.setText(peliculaEncontrada.getResumen());
+                        System.out.println("encontrado");
+                    } else {
+                        System.out.println("NO encontrado");
+                        JTextFieldDirector.setText("");
+                        JTextFieldAnio.setText("");
+                        JTextFieldNombre.setText("");
+                    }
+                i = contenidos.size();
                 }
             }
-            Optional<pelicula> Resultado = RepositorioPelicula.findById(2);
-            if (Resultado.isPresent()){
-                pelicula peliculaEncontrada = Resultado.get();
-                Integer ContenidoId = peliculaEncontrada.getContenidoId();
-                JTextFieldAnio.setText(Integer.toString(peliculaEncontrada.getAnnio()));
-                JTextFieldResumen.setText(peliculaEncontrada.getResumen());
-               System.out.println("encontrado");
-            }else{
-                System.out.println("NO encontrado");
-                JTextFieldDirector.setText("");
-                JTextFieldAnio.setText("");
-                JTextFieldNombre.setText("");
-            }
-                    
                     
             System.out.println(this.JTextFieldNombre.getText());
         } else {
             if (RadioButtonActualizar.isSelected()) {
                 
-                String Director =this.JTextFieldDirector.getText();
+                    String Director =this.JTextFieldDirector.getText();
+                    director d = new director();
+                    d.setApellido(Director);
+                    d.setNombre(Director);
+                    d.setNacionalidad(Director);
+                    RepositorioDirector.save(d);
+                    System.out.println(d.getDirectorId());
+                    
+                    String Contenido =this.JTextFieldNombre.getText();
+                    contenido c = new contenido();
+                    c.setTitulo(Contenido);
+                    RepositorioContenido.save(c);
+                    System.out.println(c.getContenidoId());
+                    
                     Integer Anio =Integer.parseInt(this.JTextFieldAnio.getText());
                     String Resumen =this.JTextFieldResumen.getText();
                     pelicula p = new pelicula();
-                   // p.setdirectorId(directorId);
+                    p.setContenidoId(c.getContenidoId());
+                    p.setDirectorId(d.getDirectorId());
                     p.setAnnio(Anio);
                     p.setResumen(Resumen);
                     RepositorioPelicula.save(p);

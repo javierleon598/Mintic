@@ -6,6 +6,7 @@
 package com.example.demo.vistas;
 
 import com.example.demo.Repositorios.RepositorioContenido;
+import com.example.demo.Repositorios.RepositorioDirector;
 import com.example.demo.Repositorios.RepositorioPelicula;
 import com.example.demo.SpringContext;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
@@ -34,6 +35,7 @@ public class PanelPeliculas extends JPanel{
    
     RepositorioContenido RepositorioContenido;
     RepositorioPelicula RepositorioPelicula;
+    RepositorioDirector RepositorioDirector;
     private JPanel jPanelDatos;
     private JPanel jPanelAccion;
     private JPanel jPanelResultado;
@@ -101,7 +103,7 @@ public class PanelPeliculas extends JPanel{
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(RepositorioContenido, RepositorioPelicula,jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldDirector, JTextFieldAnio, JTextFieldResumen);
+        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(RepositorioDirector,RepositorioContenido, RepositorioPelicula,jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldDirector, JTextFieldAnio, JTextFieldResumen);
         botonEjecutar.addActionListener(ListenerAccion);
      
         add(jPanelAccion);

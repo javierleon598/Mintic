@@ -21,14 +21,14 @@ public class pelicula {
     @Column(name="anno")
     Integer Annio;
     @Column(name="director_id")
-    String directorId;
+    Integer directorId;
     @Column(name="resumen")
     String Resumen;
     @Id
     @Column(name = "contenido_id")
     Integer contenidoId;
 
-    public pelicula(Integer Annio, String directorId, String Resumen, Integer contenidoId) {
+    public pelicula(Integer Annio, Integer directorId, String Resumen, Integer contenidoId) {
         this.Annio = Annio;
         this.directorId = directorId;
         this.Resumen = Resumen;
@@ -44,11 +44,11 @@ public class pelicula {
         this.Annio = Annio;
     }
 
-    public String getDirectorId() {
+    public Integer getDirectorId() {
         return directorId;
     }
 
-    public void setDirectorId(String directorId) {
+    public void setDirectorId(Integer directorId) {
         this.directorId = directorId;
     }
 
