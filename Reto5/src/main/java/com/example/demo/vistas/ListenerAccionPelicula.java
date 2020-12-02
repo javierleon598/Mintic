@@ -69,10 +69,9 @@ class ListenerAccionPelicula implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         
-       
-        if (RadioButtonConsultar.isSelected()) {
+     if (RadioButtonConsultar.isSelected()) {
             
-           String Titulo = this.JTextFieldNombre.getText();
+            String Titulo = this.JTextFieldNombre.getText();
             
             
             Integer contenidoId = null;
@@ -107,75 +106,10 @@ class ListenerAccionPelicula implements ActionListener{
 
                 }
             }
-                
-            
         } else {
-            if (RadioButtonInsertar.isSelected()) {
-                    
-                    
-                    String Director =this.JTextFieldDirector.getText();
-                    String NacionalidadDirector =this.JTextFieldDirectorNacionalidad.getText();
-                    String NombreDirector  = Director.split(" ")[0];
-                    String ApellidoDirector = Director.split(" ")[1];
-                    
-                    director d = new director();
-                    d.setApellido(ApellidoDirector);
-                    d.setNombre(NombreDirector);
-                    d.setNacionalidad(NacionalidadDirector);
-                    RepositorioDirector.save(d);
-                    
-                    String Contenido =JTextFieldNombre.getText();
-                    contenido c = new contenido();
-                    c.setTitulo(Contenido);
-                    RepositorioContenido.save(c);
-                  
-                    Integer Anio =Integer.parseInt(this.JTextFieldAnio.getText());
-                    String Resumen =JTextAreaResumen.getText();
-                    pelicula p = new pelicula();
-                    p.setContenidoId(c.getContenidoId());
-                    p.setDirectorId(d.getDirectorId());
-                    p.setAnnio(Anio);
-                    p.setResumen(Resumen);      
-                    RepositorioPelicula.save(p);
-                    System.out.println("Se agregó una pelicula");
-            } else {
-                if (RadioButtonEliminar.isSelected()) {
-                    System.out.println("hola");
-                    String Titulo = JTextFieldNombre.getText();
-                    System.out.println(Titulo);
-                    Integer contenidoId = null;
-                    List<contenido> contenidos = RepositorioContenido.findAll();
-                    for (int i = 0; i < contenidos.size(); i++) {
-
-                        contenido contenido = contenidos.get(i);
-                        if (contenido.getTitulo().equals(Titulo)) {
-                            contenidoId = contenido.getContenidoId();
-                             System.out.println(contenidoId);
-                            i = contenidos.size();
-                            Optional<pelicula> Resultado = RepositorioPelicula.findById(contenidoId);
-                            if (Resultado.isPresent()) {
-                                pelicula peliculaEncontrada = Resultado.get();
-
-                                RepositorioPelicula.deleteById(peliculaEncontrada.getContenidoId());
-                                RepositorioContenido.deleteById(contenido.getContenidoId());
-                                System.out.println("Eliminado");
-
-                            } else {
-                                System.out.println("NO encontrado");
-                                JTextFieldDirector.setText("");
-                                JTextFieldAnio.setText("");
-                                JTextAreaResumen.setText("");
-                            }
-
-                        }
-                    }
-
-
-                    
-                } else {
-                    if (RadioButtonActualizar.isSelected()) {
-
-                        String Titulo = this.JTextFieldNombre.getText();
+            if (RadioButtonActualizar.isSelected()) {
+                
+                String Titulo = this.JTextFieldNombre.getText();
 
                         Integer contenidoId = null;
                         List<contenido> contenidos = RepositorioContenido.findAll();
@@ -223,15 +157,75 @@ class ListenerAccionPelicula implements ActionListener{
 
                             }
                         }
+            } else {
+                if (RadioButtonInsertar.isSelected()) {
+                    
+                     System.out.println("hola");
+                    String Titulo = JTextFieldNombre.getText();
+                    System.out.println(Titulo);
+                    Integer contenidoId = null;
+                    List<contenido> contenidos = RepositorioContenido.findAll();
+                    for (int i = 0; i < contenidos.size(); i++) {
 
-                    } else {
+                        contenido contenido = contenidos.get(i);
+                        if (contenido.getTitulo().equals(Titulo)) {
+                            contenidoId = contenido.getContenidoId();
+                             System.out.println(contenidoId);
+                            i = contenidos.size();
+                            Optional<pelicula> Resultado = RepositorioPelicula.findById(contenidoId);
+                            if (Resultado.isPresent()) {
+                                pelicula peliculaEncontrada = Resultado.get();
 
+                                RepositorioPelicula.deleteById(peliculaEncontrada.getContenidoId());
+                                RepositorioContenido.deleteById(contenido.getContenidoId());
+                                System.out.println("Eliminado");
+
+                            } else {
+                                System.out.println("NO encontrado");
+                                JTextFieldDirector.setText("");
+                                JTextFieldAnio.setText("");
+                                JTextAreaResumen.setText("");
+                            }
+
+                        }
                     }
+                } else {
+                   if (RadioButtonEliminar.isSelected()) {
+                       
+                    
+                    String Director =this.JTextFieldDirector.getText();
+                    String NacionalidadDirector =this.JTextFieldDirectorNacionalidad.getText();
+                    String NombreDirector  = Director.split(" ")[0];
+                    String ApellidoDirector = Director.split(" ")[1];
+                    
+                    director d = new director();
+                    d.setApellido(ApellidoDirector);
+                    d.setNombre(NombreDirector);
+                    d.setNacionalidad(NacionalidadDirector);
+                    RepositorioDirector.save(d);
+                    
+                    String Contenido =JTextFieldNombre.getText();
+                    contenido c = new contenido();
+                    c.setTitulo(Contenido);
+                    RepositorioContenido.save(c);
+                  
+                    Integer Anio =Integer.parseInt(this.JTextFieldAnio.getText());
+                    String Resumen =JTextAreaResumen.getText();
+                    pelicula p = new pelicula();
+                    p.setContenidoId(c.getContenidoId());
+                    p.setDirectorId(d.getDirectorId());
+                    p.setAnnio(Anio);
+                    p.setResumen(Resumen);      
+                    RepositorioPelicula.save(p);
+                    System.out.println("Se agregó una pelicula");
+                    
+                } else {
+                   
+                }
                 }
 
             }
         }
-    }
-    
+    }     
     
 }
