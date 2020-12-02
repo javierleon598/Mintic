@@ -100,7 +100,7 @@ class ListenerAccionPelicula implements ActionListener{
                         JTextFieldDirectorNacionalidad.setText(directorEncontrado.getNacionalidad());
 
                     } else {
-                        JTextAreaResultado.setText("NO encontrado");
+                        JTextAreaResultado.setText("No encontrado");
                         JTextFieldDirector.setText("");
                         JTextFieldAnio.setText("");
                         JTextAreaResumen.setText("");
@@ -151,7 +151,7 @@ class ListenerAccionPelicula implements ActionListener{
                                     
 
                                 } else {
-                                    JTextAreaResultado.setText("NO encontrado");
+                                    JTextAreaResultado.setText("No encontrado");
                                     JTextFieldDirector.setText("");
                                     JTextFieldAnio.setText("");
                                     JTextAreaResumen.setText("");
@@ -183,7 +183,7 @@ class ListenerAccionPelicula implements ActionListener{
                                 JTextAreaResultado.setText("Eliminado");
 
                             } else {
-                                JTextAreaResultado.setText("NO encontrado");
+                                JTextAreaResultado.setText("No encontrado");
                                 JTextFieldDirector.setText("");
                                 JTextFieldAnio.setText("");
                                 JTextAreaResumen.setText("");

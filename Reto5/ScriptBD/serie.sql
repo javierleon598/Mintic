@@ -1,8 +1,11 @@
+Drop table serie;
 CREATE TABLE serie(
  contenido_id integer (10) PRIMARY KEY,
  numero_temporadas integer(10) NOT NULL default 1, 
  numero_episodios integer(10) NOT NULL default 1
+ 
 );
+
 insert into serie values (6, 11, 153);
 insert into serie values (7, 3, 80);
 insert into serie values (8, 3, 30);

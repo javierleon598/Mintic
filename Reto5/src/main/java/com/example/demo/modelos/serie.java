@@ -17,11 +17,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "serie")
 public class serie {
-    @Id
+    
     @Column(name="numero_episodios")
     String Episodios;
     @Column(name="numero_temporadas")
     String Temporadas;
+    @Id
     @Column(name = "contenido_id")
     Integer contenidoId;
 

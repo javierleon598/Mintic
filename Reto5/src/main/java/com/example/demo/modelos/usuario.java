@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.demo.modelos;
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.type.DateType;
+import org.hibernate.annotations.GenericGenerator;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 
 /**
  *
@@ -20,7 +24,10 @@ import org.hibernate.type.DateType;
 @Table(name = "usuario")
 public class usuario {
     @Id
-    @Column(name="nombre")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_usuario")
+    Integer usuarioId;
+    @Column(name="nomnbre")
     String Nombre;
     @Column(name="apellido")
     String Apellido;
@@ -30,12 +37,13 @@ public class usuario {
     String Celular;
     @Column(name="email")
     String email;
-    @Column(name="usuario")
+    @Column(name="alias")
     String Usuario;
     @Column(name="contrasena")
     String Contrasena;
 
-    public usuario(String Nombre, String Apellido, Date FechaNacimiento, String Celular, String email, String Usuario, String Contrasena) {
+    public usuario(Integer usuarioId, String Nombre, String Apellido, Date FechaNacimiento, String Celular, String email, String Usuario, String Contrasena) {
+        this.usuarioId = usuarioId;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.FechaNacimiento = FechaNacimiento;
@@ -44,10 +52,19 @@ public class usuario {
         this.Usuario = Usuario;
         this.Contrasena = Contrasena;
     }
-    
-    public usuario(){
+      public usuario(){
     }
     
+
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+   
     public String getNombre() {
         return Nombre;
     }
@@ -104,5 +121,7 @@ public class usuario {
         this.Contrasena = Contrasena;
     }
 
+  
     
+   
 }
