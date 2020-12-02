@@ -18,15 +18,17 @@ import javax.persistence.Table;
 @Table(name = "pelicula")
 public class pelicula {
     
+    @Id
+    @Column(name = "contenido_id")
+    Integer contenidoId;
     @Column(name="anno")
     Integer Annio;
     @Column(name="director_id")
     Integer directorId;
     @Column(name="resumen")
     String Resumen;
-    @Id
-    @Column(name = "contenido_id")
-    Integer contenidoId;
+    
+    
 
     public pelicula(Integer Annio, Integer directorId, String Resumen, Integer contenidoId) {
         this.Annio = Annio;

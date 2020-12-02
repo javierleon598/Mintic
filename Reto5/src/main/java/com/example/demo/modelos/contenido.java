@@ -7,6 +7,8 @@ package com.example.demo.modelos;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,6 +20,7 @@ import javax.persistence.Table;
 @Table(name = "contenido")
 public class contenido {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="contenido_id")
     Integer ContenidoId;
     @Column(name="titulo")

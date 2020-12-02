@@ -7,6 +7,8 @@ package com.example.demo.modelos;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,15 +16,28 @@ import javax.persistence.Table;
  *
  * @author olgat
  */
- @Entity
- @Table(name = "director")
+@Entity
+@Table(name = "director")
 public class director {
 
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "director_id")
         Integer DirectorId;
         @Column(name = "nombre")
         String Nombre;
+        @Column(name = "apellido")
+        String Apellido;
+        @Column(name = "nacionalidad")
+        String Nacionalidad;
+    
+    public director(Integer DirectorId, String Nombre, String Nacionalidad) {
+        this.DirectorId = DirectorId;
+        this.Nombre = Nombre;
+        this.Nacionalidad = Nacionalidad;
+    }
+    public director(){
+    }
 
     public Integer getDirectorId() {
         return DirectorId;
@@ -55,9 +70,5 @@ public class director {
     public void setNacionalidad(String Nacionalidad) {
         this.Nacionalidad = Nacionalidad;
     }
-        @Column(name = "apellido")
-        String Apellido;
-        @Column(name = "nacionalidad")
-        String Nacionalidad;
-   
+    
 }
