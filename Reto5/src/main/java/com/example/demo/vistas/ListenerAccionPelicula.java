@@ -46,11 +46,12 @@ class ListenerAccionPelicula implements ActionListener{
     JTextField JTextFieldAnio;
     JTextArea JTextAreaResumen;
     JTextField JTextFieldDirectorNacionalidad;
+    JTextArea JTextAreaResultado;
     
     
     
     
-    public ListenerAccionPelicula(RepositorioDirector RepositorioDirector, RepositorioContenido RepositorioContenido,RepositorioPelicula RepositorioPelicula, JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldDirector, JTextField JTextFieldAnio, JTextArea JTextAreaResumen, JTextField JTextFieldDirectorNacionalidad ) {
+    public ListenerAccionPelicula(JTextArea JTextAreaResultado,RepositorioDirector RepositorioDirector, RepositorioContenido RepositorioContenido,RepositorioPelicula RepositorioPelicula, JRadioButton RadioButtonConsultar, JRadioButton RadioButtonActualizar, JRadioButton RadioButtonEliminar, JRadioButton RadioButtonInsertar, JTextField JTextFieldNombre, JTextField JTextFieldDirector, JTextField JTextFieldAnio, JTextArea JTextAreaResumen, JTextField JTextFieldDirectorNacionalidad ) {
         this.RadioButtonConsultar = RadioButtonConsultar;
         this.RadioButtonActualizar = RadioButtonActualizar;
         this.RadioButtonEliminar = RadioButtonEliminar;
@@ -63,6 +64,7 @@ class ListenerAccionPelicula implements ActionListener{
         this.RepositorioPelicula = RepositorioPelicula;
         this.RepositorioDirector = RepositorioDirector;
         this.JTextFieldDirectorNacionalidad = JTextFieldDirectorNacionalidad;
+        this.JTextAreaResultado =JTextAreaResultado;
     }
     
     
@@ -89,16 +91,16 @@ class ListenerAccionPelicula implements ActionListener{
 
                         JTextFieldAnio.setText(Integer.toString(peliculaEncontrada.getAnnio()));
                         JTextAreaResumen.setText(peliculaEncontrada.getResumen());
-                        System.out.println("encontrado");
+                        JTextAreaResultado.setText("Encontrado");
                         Integer DirectorId = peliculaEncontrada.getDirectorId();
-                        System.out.println(peliculaEncontrada.getDirectorId());
+                        
 
                         director directorEncontrado = RepositorioDirector.findById(DirectorId).get();
                         JTextFieldDirector.setText(directorEncontrado.getNombre() + " " + directorEncontrado.getApellido());
                         JTextFieldDirectorNacionalidad.setText(directorEncontrado.getNacionalidad());
 
                     } else {
-                        System.out.println("NO encontrado");
+                        JTextAreaResultado.setText("NO encontrado");
                         JTextFieldDirector.setText("");
                         JTextFieldAnio.setText("");
                         JTextAreaResumen.setText("");
@@ -130,7 +132,7 @@ class ListenerAccionPelicula implements ActionListener{
                                     peliculaEncontrada.setAnnio(Anio);
                                     peliculaEncontrada.setResumen(Resumen);      
                                     RepositorioPelicula.save(peliculaEncontrada);
-                                    System.out.println("Se agregó una pelicula");
+                                    JTextAreaResultado.setText("Se agregó una pelicula");
 
                                     Integer DirectorId = peliculaEncontrada.getDirectorId();
                                     System.out.println(peliculaEncontrada.getDirectorId());
@@ -149,7 +151,7 @@ class ListenerAccionPelicula implements ActionListener{
                                     
 
                                 } else {
-                                    System.out.println("NO encontrado");
+                                    JTextAreaResultado.setText("NO encontrado");
                                     JTextFieldDirector.setText("");
                                     JTextFieldAnio.setText("");
                                     JTextAreaResumen.setText("");
@@ -160,7 +162,7 @@ class ListenerAccionPelicula implements ActionListener{
             } else {
                 if (RadioButtonInsertar.isSelected()) {
                     
-                     System.out.println("hola");
+                    
                     String Titulo = JTextFieldNombre.getText();
                     System.out.println(Titulo);
                     Integer contenidoId = null;
@@ -178,10 +180,10 @@ class ListenerAccionPelicula implements ActionListener{
 
                                 RepositorioPelicula.deleteById(peliculaEncontrada.getContenidoId());
                                 RepositorioContenido.deleteById(contenido.getContenidoId());
-                                System.out.println("Eliminado");
+                                JTextAreaResultado.setText("Eliminado");
 
                             } else {
-                                System.out.println("NO encontrado");
+                                JTextAreaResultado.setText("NO encontrado");
                                 JTextFieldDirector.setText("");
                                 JTextFieldAnio.setText("");
                                 JTextAreaResumen.setText("");
@@ -190,7 +192,7 @@ class ListenerAccionPelicula implements ActionListener{
                         }
                     }
                 } else {
-                   if (RadioButtonEliminar.isSelected()) {
+                   if (RadioButtonEliminar.isSelected()){
                        
                     
                     String Director =this.JTextFieldDirector.getText();
@@ -217,10 +219,10 @@ class ListenerAccionPelicula implements ActionListener{
                     p.setAnnio(Anio);
                     p.setResumen(Resumen);      
                     RepositorioPelicula.save(p);
-                    System.out.println("Se agregó una pelicula");
+                    JTextAreaResultado.setText("Se agregó una pelicula");
                     
                 } else {
-                   
+                   JTextAreaResultado.setText("Todos los campos son obligatorios ");
                 }
                 }
 
