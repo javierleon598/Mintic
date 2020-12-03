@@ -114,7 +114,7 @@ class ListenerAccionUsuario implements ActionListener{
                         JTextAreaResultado.setText("Encontrado");
 
                     } else {
-                        JTextAreaResultado.setText("NO encontrado");
+                        JTextAreaResultado.setText("No encontrado");
                         JTextFieldNombre.setText("");
                         JTextFieldApellido.setText("");
                  
@@ -156,7 +156,7 @@ class ListenerAccionUsuario implements ActionListener{
 
 
                                 } else {
-                                    JTextAreaResultado.setText("NO encontrado");
+                                    JTextAreaResultado.setText("No encontrado");
                                     this.JTextFieldNombre.setText("");
                                     this.JTextFieldApellido.setText("");
                                     this.JTextFieldEmail.setText("");
@@ -187,7 +187,7 @@ class ListenerAccionUsuario implements ActionListener{
                                 JTextAreaResultado.setText("Eliminado");
 
                             } else {
-                                JTextAreaResultado.setText("NO encontrado");
+                                JTextAreaResultado.setText("No encontrado");
                                  this.JTextFieldNombre.setText("");
                                     this.JTextFieldApellido.setText("");
                                     this.JTextFieldEmail.setText("");
@@ -217,6 +217,7 @@ class ListenerAccionUsuario implements ActionListener{
                     u.setUsuario(Usuario);
                     u.setFechaNacimiento(FechaNacimiento);
                     RepositorioUsuario.save(u);
+                    
               
                     JTextAreaResultado.setText("Se agregó un Usuario");
             break;

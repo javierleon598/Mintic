@@ -120,7 +120,7 @@ public class PanelPeliculas extends JPanel{
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
         
-        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(JTextAreaResultado,RepositorioDirector,RepositorioContenido, RepositorioPelicula,jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldDirector, JTextFieldAnio, JTextAreaResumen, JTextFieldDirectorNacionalidad);
+        ListenerAccionPelicula ListenerAccion = new ListenerAccionPelicula(JTextAreaResultado,RepositorioDirector,RepositorioContenido, RepositorioPelicula,buttonGroupDireccion, JTextFieldNombre, JTextFieldDirector, JTextFieldAnio, JTextAreaResumen, JTextFieldDirectorNacionalidad);
         botonEjecutar.addActionListener(ListenerAccion);
      
         add(jPanelAccion);

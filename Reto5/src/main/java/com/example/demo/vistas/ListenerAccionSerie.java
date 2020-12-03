@@ -14,13 +14,20 @@ import com.example.demo.modelos.pelicula;
 import com.example.demo.modelos.serie;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
+import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.exception.GenericJDBCException;
+import org.hibernate.exception.JDBCConnectionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.dao.DataAccessException;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Component;
 
 /**
@@ -74,6 +81,10 @@ class ListenerAccionSerie implements ActionListener{
                     contenidoId = contenido.getContenidoId();
                     System.out.println(contenidoId); 
                     i = contenidos.size();
+                    
+                }
+            }
+            if(contenidoId != null){
                     Optional<serie> Resultado = RepositorioSerie.findById(contenidoId);
                     if (Resultado.isPresent()) {
                         serie serieEncontrada = Resultado.get();
@@ -83,13 +94,16 @@ class ListenerAccionSerie implements ActionListener{
                         JTextAreaResultado.setText("Encontrado");
 
                     } else {
-                        JTextAreaResultado.setText("NO encontrado");
+                        JTextAreaResultado.setText("No encontrado");
                         JTextFieldEpisodios.setText("");
                         JTextFieldTemporadas.setText("");
                  
                     }
 
-                }
+                }else{
+                    JTextAreaResultado.setText("No encontrado");
+                    JTextFieldEpisodios.setText("");
+                    JTextFieldTemporadas.setText("");
             }
         } else {
             if (RadioButtonActualizar.isSelected()) {
@@ -115,11 +129,17 @@ class ListenerAccionSerie implements ActionListener{
                                     serieEncontrada.setEpisodios(Episodios);
                                     serieEncontrada.setTemporadas(Temporadas);      
                                     RepositorioSerie.save(serieEncontrada);
-                                    JTextAreaResultado.setText("Se agregó una pelicula");
+                                    try {
+                                        RepositorioSerie.save(serieEncontrada);
+                                    } catch (DataAccessException ex) {
+                                        JTextAreaResultado.setText("Todos los campos son obligatorios");
+                                    }
+                                   
+                                    JTextAreaResultado.setText("Se agregó una serie");
 
 
                                 } else {
-                                    JTextAreaResultado.setText("NO encontrado");
+                                    JTextAreaResultado.setText("No encontrado");
                                     JTextFieldEpisodios.setText("");
                                     JTextFieldTemporadas.setText("");
                                     
