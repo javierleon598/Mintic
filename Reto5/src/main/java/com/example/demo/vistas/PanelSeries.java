@@ -43,6 +43,8 @@ public class PanelSeries extends JPanel{
     private JTextField JTextFieldTemporadas;
     private JLabel JLabelTemporadas;
     private ButtonGroup buttonGroupDireccion;
+    private ListenerAccionSerie ListenerAccionSerie;
+   
     RepositorioSerie RepositorioSerie = SpringContext.getBean(RepositorioSerie.class);
     RepositorioContenido RepositorioContenido = SpringContext.getBean(RepositorioContenido.class);
     
@@ -54,24 +56,20 @@ public class PanelSeries extends JPanel{
    
      private void initComponents() {
         
-        
-         
         GridLayout gridLayout = new GridLayout(3,1,10,10);
         setLayout(gridLayout);
         
-       
-         
         GridLayout gridLayoutAccion = new GridLayout(2,1);     
         GridLayout gridLayoutDatos = new GridLayout(4,1,0,10);     
         GridLayout gridLayoutResultado = new GridLayout(0,1,10,10);
          
-        
         JButton botonEjecutar = new JButton("ejecutar");
          
          jRadioButtonConsultar = new JRadioButton("Consultar", true);
          jRadioButtonActualizar = new JRadioButton("Actualizar");
          jRadioButtonInsertar = new JRadioButton("Insertar");
          jRadioButtonEliminar = new JRadioButton("Eliminar");
+         
          JTextAreaResultado = new JTextArea("Resultado");
          JTextFieldNombre = new JTextField(20);
          JLabelNombre= new JLabel("Nombre");
@@ -79,6 +77,7 @@ public class PanelSeries extends JPanel{
          JLabelEpisodios = new JLabel("Episodios");
          JTextFieldTemporadas = new JTextField(20);
          JLabelTemporadas = new JLabel("Temporadas");
+         
          jPanelAccion = new JPanel();
          jPanelDatos = new JPanel();
          jPanelResultado = new JPanel();
@@ -93,7 +92,8 @@ public class PanelSeries extends JPanel{
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccionSerie ListenerAccionSerie = new ListenerAccionSerie(RepositorioContenido, RepositorioSerie,jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldEpisodios, JTextFieldTemporadas);
+        
+        ListenerAccionSerie = new ListenerAccionSerie(RepositorioContenido, RepositorioSerie,jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldEpisodios, JTextFieldTemporadas, JTextAreaResultado);
         botonEjecutar.addActionListener(ListenerAccionSerie);
         
         add(jPanelAccion);

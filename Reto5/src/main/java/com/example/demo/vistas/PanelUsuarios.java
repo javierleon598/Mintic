@@ -1,16 +1,22 @@
 package com.example.demo.vistas;
 
+import com.example.demo.Repositorios.RepositorioUsuario;
+import com.example.demo.SpringContext;
 import com.toedter.calendar.JDateChooser;
 import java.awt.GridLayout;
+import java.util.Arrays;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
+
+
 
 /**
  *
@@ -25,11 +31,11 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private JPanel jPanelDatos;
     private JPanel jPanelAccion;
     private JPanel jPanelResultado;
-    
-    private JRadioButton jRadioButtonConsultar; 
-    private JRadioButton jRadioButtonActualizar;
-    private JRadioButton jRadioButtonInsertar;
-    private JRadioButton jRadioButtonEliminar;
+    ButtonGroup buttonGroupDireccion;
+    JRadioButton jRadioButtonConsultar; 
+    JRadioButton jRadioButtonActualizar;
+    JRadioButton jRadioButtonInsertar;
+    JRadioButton jRadioButtonEliminar;
     private JTextArea JTextAreaResultado;
     private JTextField JTextFieldNombre;
     private JLabel JLabelNombre;
@@ -45,8 +51,9 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private JLabel JLabelContrasena;
     private JLabel JLabelFechaNac;
     private com.toedter.calendar.JDateChooser jDateChooserFechaNacimiento;
-    private ButtonGroup buttonGroupDireccion;
-   
+    
+    
+    RepositorioUsuario RepositorioUsuario = SpringContext.getBean(RepositorioUsuario.class);
     
     public PanelUsuarios() {
         initComponents();
@@ -101,15 +108,16 @@ public class PanelUsuarios extends javax.swing.JPanel {
          jPanelDatos.setLayout(gridLayoutDatos);
          jPanelResultado.setLayout(gridLayoutResultado);
          
-        buttonGroupDireccion = new ButtonGroup();
+         buttonGroupDireccion = new ButtonGroup();
         // Adiciona el boton de opción a un grupo de botones
         buttonGroupDireccion.add(jRadioButtonConsultar);
         buttonGroupDireccion.add(jRadioButtonActualizar);
         buttonGroupDireccion.add(jRadioButtonInsertar);
         buttonGroupDireccion.add(jRadioButtonEliminar);
-        ListenerAccionUsuarios ListenerAccion = new ListenerAccionUsuarios(jRadioButtonConsultar, jRadioButtonActualizar, jRadioButtonInsertar, jRadioButtonEliminar, JTextFieldNombre, JTextFieldApellido, jDateChooserFechaNacimiento, JTextFieldCelular, JTextFieldEmail, JTextFieldUsuario, JTextFieldContrasena);
-        botonEjecutar.addActionListener(ListenerAccion);
-     
+        
+        ListenerAccionUsuario ListenerAccionUsuario = new ListenerAccionUsuario(RepositorioUsuario,buttonGroupDireccion, JTextFieldNombre, JTextFieldApellido, jDateChooserFechaNacimiento, JTextFieldEmail, JTextFieldCelular, JTextFieldUsuario, JTextFieldContrasena,  JTextAreaResultado );
+        botonEjecutar.addActionListener(ListenerAccionUsuario);
+        
       
         add(jPanelAccion);
         jPanelAccion.add(jRadioButtonConsultar);
@@ -172,45 +180,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         this.jPanelResultado = jPanelResultado;
     }
 
-    public JTextField getJTextFieldUsuario() {
-        return JTextFieldUsuario;
-    }
-
-    public void setJTextFieldUsuario(JTextField JTextFieldUsuario) {
-        this.JTextFieldUsuario = JTextFieldUsuario;
-    }
-
-    public JTextField getJTextFieldContrasena() {
-        return JTextFieldContrasena;
-    }
-
-    public void setJTextFieldContrasena(JTextField JTextFieldContrasena) {
-        this.JTextFieldContrasena = JTextFieldContrasena;
-    }
-
-    public JLabel getJLabelContrasena() {
-        return JLabelContrasena;
-    }
-
-    public void setJLabelContrasena(JLabel JLabelContrasena) {
-        this.JLabelContrasena = JLabelContrasena;
-    }
-
-    public JLabel getJLabelFechaNac() {
-        return JLabelFechaNac;
-    }
-
-    public void setJLabelFechaNac(JLabel JLabelFechaNac) {
-        this.JLabelFechaNac = JLabelFechaNac;
-    }
-
-    public JDateChooser getjDateChooserFechaNacimiento() {
-        return jDateChooserFechaNacimiento;
-    }
-
-    public void setjDateChooserFechaNacimiento(JDateChooser jDateChooserFechaNacimiento) {
-        this.jDateChooserFechaNacimiento = jDateChooserFechaNacimiento;
-    }
     public JRadioButton getjRadioButtonConsultar() {
         return jRadioButtonConsultar;
     }
@@ -291,6 +260,22 @@ public class PanelUsuarios extends javax.swing.JPanel {
         this.JTextFieldEmail = JTextFieldEmail;
     }
 
+    public JLabel getJLabelCelular() {
+        return JLabelCelular;
+    }
+
+    public void setJLabelCelular(JLabel JLabelCelular) {
+        this.JLabelCelular = JLabelCelular;
+    }
+
+    public JTextField getJTextFieldCelular() {
+        return JTextFieldCelular;
+    }
+
+    public void setJTextFieldCelular(JTextField JTextFieldCelular) {
+        this.JTextFieldCelular = JTextFieldCelular;
+    }
+
     public JLabel getJLabelEmail() {
         return JLabelEmail;
     }
@@ -299,12 +284,12 @@ public class PanelUsuarios extends javax.swing.JPanel {
         this.JLabelEmail = JLabelEmail;
     }
 
-    public JTextField getJTextFieldUsuaro() {
+    public JTextField getJTextFieldUsuario() {
         return JTextFieldUsuario;
     }
 
-    public void setJTextFieldUsuaro(JTextField JTextFieldUsuaro) {
-        this.JTextFieldUsuario = JTextFieldUsuaro;
+    public void setJTextFieldUsuario(JTextField JTextFieldUsuario) {
+        this.JTextFieldUsuario = JTextFieldUsuario;
     }
 
     public JLabel getJLabelUsuario() {
@@ -315,6 +300,38 @@ public class PanelUsuarios extends javax.swing.JPanel {
         this.JLabelUsuario = JLabelUsuario;
     }
 
+    public JTextField getJTextFieldContrasena() {
+        return JTextFieldContrasena;
+    }
+
+    public void setJTextFieldContrasena(JTextField JTextFieldContrasena) {
+        this.JTextFieldContrasena = JTextFieldContrasena;
+    }
+
+    public JLabel getJLabelContrasena() {
+        return JLabelContrasena;
+    }
+
+    public void setJLabelContrasena(JLabel JLabelContrasena) {
+        this.JLabelContrasena = JLabelContrasena;
+    }
+
+    public JLabel getJLabelFechaNac() {
+        return JLabelFechaNac;
+    }
+
+    public void setJLabelFechaNac(JLabel JLabelFechaNac) {
+        this.JLabelFechaNac = JLabelFechaNac;
+    }
+
+    public JDateChooser getjDateChooserFechaNacimiento() {
+        return jDateChooserFechaNacimiento;
+    }
+
+    public void setjDateChooserFechaNacimiento(JDateChooser jDateChooserFechaNacimiento) {
+        this.jDateChooserFechaNacimiento = jDateChooserFechaNacimiento;
+    }
+
     public ButtonGroup getButtonGroupDireccion() {
         return buttonGroupDireccion;
     }
@@ -322,4 +339,8 @@ public class PanelUsuarios extends javax.swing.JPanel {
     public void setButtonGroupDireccion(ButtonGroup buttonGroupDireccion) {
         this.buttonGroupDireccion = buttonGroupDireccion;
     }
+
+  
+
+   
 }

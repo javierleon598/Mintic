@@ -5,17 +5,18 @@
  */
 
 package com.example.demo.Repositorios;
-import com.example.demo.modelos.pelicula;
+
 import com.example.demo.modelos.usuario;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
+
+
+
 
 /**
  *
  * @author olgat
  */
 
-public interface RepositorioUsuario extends JpaRepository<usuario, String> {
+public interface RepositorioUsuario extends JpaRepository<usuario, Integer> {
     
 }
